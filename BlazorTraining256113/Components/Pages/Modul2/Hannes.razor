@@ -1,0 +1,18 @@
+﻿@page "/hannes"
+@page "/hannes/{MyProperty:int}"
+
+<h3>Hannes</h3>
+<p>wetter ist schön, es hat @i° @ii</p>
+<button class="btn btn-primary" @onclick="do1">Click me</button> 
+
+@code {
+    int i=18;
+    [Parameter]
+    public int MyProperty { get; set; }
+
+    void do1()
+    {
+        i = MyProperty;
+        Console.WriteLine($"{i} {ii}");
+    }
+}
