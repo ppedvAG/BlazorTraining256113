@@ -1,0 +1,36 @@
+﻿@page "/monate"
+<h3>Monate</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(selectedMonat)
+
+        </div>
+        <div class="col-12 col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item active">Monat</li>
+                
+                @for (int i = 1; i <= 12; i++)
+                {
+                    var m = i;
+                    <li class='list-group-item list-group-item-action 
+                                @(selectedMonat==i? "list-group-item-info":"")'
+                    
+                    @onclick="() => wahl(m)">
+                    @i
+                        @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)
+
+                  </li>  
+                }
+            </ul>
+
+        </div>
+    </div>
+</div>
+@code {
+    int selectedMonat = 1;
+    void wahl(int m)
+    {
+        selectedMonat = m;
+    }
+}
