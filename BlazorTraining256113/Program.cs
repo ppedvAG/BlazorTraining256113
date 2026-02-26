@@ -1,11 +1,13 @@
 using BlazorTraining256113.Components;
+using BlazorTraining256113.Components.Pages.Modul4;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
+builder.Services.AddScoped<ToDoVM>();
+builder.Services.AddHttpClient();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
