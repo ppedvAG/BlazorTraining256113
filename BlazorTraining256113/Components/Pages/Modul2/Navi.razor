@@ -1,0 +1,21 @@
+﻿@page "/naviA"
+@page "/naviB"
+@inject NavigationManager nav
+<h3>Navi</h3>
+<a href="naviA">A</a><br />
+<a href="naviB">B</a>
+<br />
+<button class="btn btn-primary" @onclick="do1">Click me</button>
+@code {
+    void do1()
+    {
+        nav.NavigateTo("naviA");
+        nav.LocationChanged += (s, e) => Console.WriteLine($"Location changed: {e.Location}");
+
+        //nav.LocationChanged += Methode;
+    }
+    void Methode(object s, LocationChangedEventArgs e)
+    {
+        Console.WriteLine($"Location changed: {e.Location}");
+    }
+}
