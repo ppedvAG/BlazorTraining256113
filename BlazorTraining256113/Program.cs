@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<ToDoVM>();
+builder.Services.AddSingleton<ChatVM>();
 builder.Services.AddHttpClient();
 var app = builder.Build();
 
