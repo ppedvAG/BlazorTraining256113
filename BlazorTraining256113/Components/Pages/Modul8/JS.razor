@@ -1,0 +1,37 @@
+﻿@page "/js"
+@using RazorClassLibrary1
+@inject IJSRuntime js
+<h3>JS</h3>
+@Ausgabe
+<button class="btn btn-primary" @onclick="callJS">Call JS</button>  
+<button class="btn btn-primary" @onclick="callJS2">Call JS Colocation</button>
+<button class="btn btn-primary" @onclick="callJS3">Call JS Library</button>
+
+@code {
+    string Ausgabe="lweer";
+
+    async void callJS()
+    {
+
+
+        Ausgabe=await js.InvokeAsync<string>("prompt", Ausgabe);
+        StateHasChanged();
+    }   
+
+    async void callJS2()
+    {
+        Ausgabe= await minijs.InvokeAsync<string>("ppedvPrompt", "titel");
+    }
+
+    async void callJS3()
+    {
+        var lib = new ExampleJsInterop(js);
+       Ausgabe=await lib.Prompt("Lib Prompot");
+
+    }
+    IJSObjectReference minijs;
+    protected override async Task OnInitializedAsync()
+    {
+       minijs=await js.InvokeAsync<IJSObjectReference>("import", "./components/pages/modul8/js.razor.js");
+    }
+}
