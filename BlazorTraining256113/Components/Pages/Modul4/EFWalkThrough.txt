@@ -6,4 +6,5 @@ Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security
 
 scaffold-dbcontext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True;Encrypt=False"  Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models 
 program.cs
-builder.Services.AddDbContext<NorthwindContext>();
+builder.Services.AddDbContext<NorthwindContext>(o=>o.UseSqlServer(
+    builder.Configuration.GetConnectionString("northwind")));
