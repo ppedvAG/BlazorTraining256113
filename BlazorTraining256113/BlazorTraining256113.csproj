@@ -27,4 +27,10 @@
     <ProjectReference Include="..\RazorClassLibrary1\RazorClassLibrary1.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\modul8.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
