@@ -1,0 +1,37 @@
+﻿@page "/todoV"
+@inject HttpClient httpClient
+@inject ToDoVM vm
+<div class="container">
+  
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item active">Todo</li>
+            
+             
+            <Virtualize Items="@vm.Liste" Context="item" OverscanCount="5" ItemSize="30" >
+               <EmptyContent>
+                   <li>keine Daten</li>
+
+               </EmptyContent>
+               <ItemContent>
+                    <li class='list-group-item list-group-item-action
+                        @item.completed?"list-group-item-dark":"" '>
+                        @item.todo
+
+
+                    </li>
+               </ItemContent>    
+            
+               
+                </Virtualize>
+           
+        </ul>
+
+
+
+    </div>
+</div>
+@code {
+    string Eingabe="";
+
+}
