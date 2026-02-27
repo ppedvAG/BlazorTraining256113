@@ -1,0 +1,31 @@
+﻿@page "/modal"
+<h3>UseModal</h3>
+<Modal @ref="modal1" Title="Toller Dialog!" OnSave="save">
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Eingabe</label>
+        <div class="col-sm-10">
+
+            <input class="form-control" @bind="Eingabe"></input>
+
+        </div>
+    </div>
+
+</Modal>
+<button type="button" class="btn btn-primary" @onclick="show">
+    Launch demo modal
+</button>
+
+@code {
+    string Eingabe;
+    Modal modal1;
+    void save()
+    {
+        Eingabe = "";
+        modal1.Show();
+    }
+
+    void show()
+    {
+        modal1.Show();
+    }
+}
