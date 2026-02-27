@@ -1,5 +1,4 @@
-﻿@page "/todo"
-@inject HttpClient httpClient
+@page "/todo"
 @inject ToDoVM vm
 <div class="container">
     <div class="row">
@@ -13,31 +12,30 @@
     <div class="row">
         <ul class="list-group">
             <li class="list-group-item active">Todo</li>
-            @if (vm.Liste == null)
+            @if (isLoading)
             {
-                <li>Daten laden...</li>
+                <li class="list-group-item">Daten laden...</li>
             }
             else
             {
-                @foreach (var item in vm.Liste.Where(x=>x.todo.Contains(Eingabe,StringComparison.InvariantCultureIgnoreCase)))
+                @foreach (var item in vm.Liste.Where(x => x.todo.Contains(Eingabe, StringComparison.InvariantCultureIgnoreCase)))
                 {
-
-
-                    <li class='list-group-item list-group-item-action 
+                    <li class='list-group-item list-group-item-action
                         @item.completed?"list-group-item-dark":"" '>
                         @item.todo
-
-
                     </li>
                 }
             }
         </ul>
-
-
-
     </div>
 </div>
 @code {
-    string Eingabe="";
+    private string Eingabe = "";
+    private bool isLoading = true;
 
+    protected override async Task OnInitializedAsync()
+    {
+        await vm.LoadTodosAsync();
+        isLoading = false;
+    }
 }
