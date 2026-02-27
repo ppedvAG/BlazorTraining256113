@@ -1,0 +1,22 @@
+﻿@page "/uc"
+<h3>UseComponent</h3>
+<CascadingValue Value="42">
+    <CascadingValue Value="@("42")" >
+        <Component MyProperty="42" MyProperty1="42" @ref="comp1"
+                   style="width:100px;background-color:yellow">
+
+            <ItemContent> <p>ich bins Hannes</p></ItemContent>
+            <EmptyItemContent></EmptyItemContent>
+        </Component>
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    Component comp1;
+
+    protected override void OnInitialized()
+    {
+        //  comp1.MyProperty1 = "Hannes"; //böse weil Mutter gerade so da und kinde erst recht nicht
+    }
+
+}

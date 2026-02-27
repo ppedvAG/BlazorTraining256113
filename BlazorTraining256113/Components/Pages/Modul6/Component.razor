@@ -1,0 +1,30 @@
+﻿<h3>Component @MyProperty @MyProperty1</h3>
+<div @attributes="@AdditionalHannes">
+    sdgfdgfd
+    @ItemContent
+</div>
+@code {
+    [Parameter]
+    public int MyProperty { get; set; }
+    [Parameter]
+    [EditorRequired]
+    public string MyProperty1 { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalHannes { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+
+
+    [CascadingParameter]
+    public int MyProperty2 { get; set; }
+    [CascadingParameter]
+    public string MyProperty3 { get; set; }
+
+
+
+    [Parameter]
+    public RenderFragment ItemContent { get; set; }
+    [Parameter]
+    public RenderFragment EmptyItemContent { get; set; }
+}
