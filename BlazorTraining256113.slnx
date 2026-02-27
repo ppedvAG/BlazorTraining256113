@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="BlazorTraining256113/BlazorTraining256113.csproj" />
+  <Project Path="RazorClassLibrary1/RazorClassLibrary1.csproj" Id="2ba78a9e-1191-4312-aeda-8a472711f756" />
 </Solution>
